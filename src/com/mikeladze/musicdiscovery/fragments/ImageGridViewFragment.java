@@ -19,7 +19,7 @@ public abstract class ImageGridViewFragment extends BaseTabFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_image_grid, container, false);
 		
-		gridAdapter = new ImageGridAdapter(getActivity());
+		gridAdapter = new ImageGridAdapter(getActivity(), 0);
 		gridView = (StaggeredGridView) v.findViewById(R.id.gridview);
 		
 		int margin = getResources().getDimensionPixelSize(R.dimen.margin);

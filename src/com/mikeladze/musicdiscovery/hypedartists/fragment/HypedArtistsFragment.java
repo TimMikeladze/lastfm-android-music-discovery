@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.mikeladze.musicdiscovery.fragments.ImageGridViewFragment;
 import com.mikeladze.musicdiscovery.http.RestClient;
+import com.mikeladze.musicdiscovery.view.gridview.GridItem;
 
 import fm.last.charts.Chart;
 
@@ -42,10 +43,13 @@ public class HypedArtistsFragment extends ImageGridViewFragment {
 						JSONArray artists = response.getJSONObject("artists")
 													.getJSONArray("artist");
 						for (int i = 0; i < artists.length(); i++) {
-							gridAdapter.addImage(artists.getJSONObject(i)
-														.getJSONArray("image")
-														.getJSONObject(4)
-														.getString("#text"));
+							String image = artists.getJSONObject(i)
+													.getJSONArray("image")
+													.getJSONObject(4)
+													.getString("#text");
+							String title = artists.getJSONObject(i)
+													.getString("name");
+							gridAdapter.add(new GridItem(image, title));
 						}
 						gridAdapter.notifyDataSetChanged();
 					} catch (JSONException e) {
