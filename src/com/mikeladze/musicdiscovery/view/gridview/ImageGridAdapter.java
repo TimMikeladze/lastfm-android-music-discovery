@@ -9,9 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.mikeladze.musicdiscovery.R;
+import com.mikeladze.musicdiscovery.http.LastFMResult;
 import com.mikeladze.musicdiscovery.view.gridview.loader.ImageLoader;
 
-public class ImageGridAdapter extends ArrayAdapter<GridItem> {
+public class ImageGridAdapter extends ArrayAdapter<LastFMResult> {
 	
 	private Context context;
 	
@@ -42,7 +43,7 @@ public class ImageGridAdapter extends ArrayAdapter<GridItem> {
 		holder = (ViewHolder) convertView.getTag();
 		
 		if (getCount() > 0) {
-			GridItem gi = getItem(position);
+			LastFMResult gi = getItem(position);
 			imageLoader.displayImage(gi.getImage(), holder.image);
 			holder.title.setText(gi.getTitle());
 			

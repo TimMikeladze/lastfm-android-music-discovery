@@ -1,12 +1,12 @@
 
-package com.mikeladze.musicdiscovery.view.gridview;
+package com.mikeladze.musicdiscovery.http;
 
-public class GridItem {
+public class LastFMResult {
 	
 	private String image;
 	private String title;
 	
-	public GridItem(String image, String title) {
+	public LastFMResult(String image, String title) {
 		this.image = image;
 		this.title = title;
 	}

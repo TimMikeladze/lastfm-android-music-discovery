@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.mikeladze.musicdiscovery.base.fragments.ImageGridViewFragment;
+import com.mikeladze.musicdiscovery.http.LastFMResult;
 import com.mikeladze.musicdiscovery.http.RestClient;
-import com.mikeladze.musicdiscovery.view.gridview.GridItem;
 
 import fm.last.charts.Chart;
 
@@ -49,7 +49,7 @@ public class TopArtistsFragment extends ImageGridViewFragment {
 													.getString("#text");
 							String title = artists.getJSONObject(i)
 													.getString("name");
-							gridAdapter.add(new GridItem(image, title));
+							gridAdapter.add(new LastFMResult(image, title));
 						}
 						gridAdapter.notifyDataSetChanged();
 					} catch (JSONException e) {
