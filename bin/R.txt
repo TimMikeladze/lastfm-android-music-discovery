@@ -176,7 +176,7 @@ int drawable tab_selected_style 0x7f02001d
 int drawable tab_unselected_focused_style 0x7f02001e
 int drawable tab_unselected_pressed_style 0x7f02001f
 int drawable tab_unselected_style 0x7f020020
-int id action_settings 0x7f090005
+int id action_search 0x7f090005
 int id gridview 0x7f090001
 int id imageview 0x7f090003
 int id pager 0x7f090000
@@ -187,6 +187,7 @@ int layout fragment_image_grid 0x7f030001
 int layout fragment_main_dummy 0x7f030002
 int layout view_image_grid_item 0x7f030003
 int menu main 0x7f080000
+int string action_search 0x7f060007
 int string action_settings 0x7f060001
 int string app_name 0x7f060000
 int string hello_world 0x7f060002

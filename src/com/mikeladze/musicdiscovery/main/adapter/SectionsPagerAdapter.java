@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.mikeladze.musicdiscovery.fragments.BaseTabFragment;
+import com.mikeladze.musicdiscovery.base.fragments.BaseTabFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 	

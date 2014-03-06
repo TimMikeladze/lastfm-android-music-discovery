@@ -215,7 +215,7 @@ containing a value of this type.
         public static final int tab_unselected_style=0x7f020020;
     }
     public static final class id {
-        public static final int action_settings=0x7f090005;
+        public static final int action_search=0x7f090005;
         public static final int gridview=0x7f090001;
         public static final int imageview=0x7f090003;
         public static final int pager=0x7f090000;
@@ -232,6 +232,7 @@ containing a value of this type.
         public static final int main=0x7f080000;
     }
     public static final class string {
+        public static final int action_search=0x7f060007;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;

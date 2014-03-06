@@ -5,17 +5,17 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
 import com.mikeladze.musicdiscovery.R;
+import com.mikeladze.musicdiscovery.base.activities.BaseFragmentActivity;
 import com.mikeladze.musicdiscovery.hypedartists.fragment.HypedArtistsFragment;
 import com.mikeladze.musicdiscovery.main.adapter.SectionsPagerAdapter;
 import com.mikeladze.musicdiscovery.topartists.fragment.TopArtistsFragment;
 
 import fm.last.lastfm.LastFM;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class MainActivity extends BaseFragmentActivity implements ActionBar.TabListener {
 	
 	private SectionsPagerAdapter sectionsPagerAdapter;
 	private ViewPager viewPager;

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.mikeladze.musicdiscovery.fragments.ImageGridViewFragment;
+import com.mikeladze.musicdiscovery.base.fragments.ImageGridViewFragment;
 import com.mikeladze.musicdiscovery.http.RestClient;
 import com.mikeladze.musicdiscovery.view.gridview.GridItem;
 
