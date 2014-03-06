@@ -12,8 +12,6 @@ import com.mikeladze.musicdiscovery.R;
 import com.mikeladze.musicdiscovery.hypedartists.fragment.HypedArtistsFragment;
 import com.mikeladze.musicdiscovery.main.adapter.SectionsPagerAdapter;
 import com.mikeladze.musicdiscovery.topartists.fragment.TopArtistsFragment;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import fm.last.lastfm.LastFM;
 
@@ -60,10 +58,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	
 	private void intialize() {
 		LastFM.setApiKey("aa4b32f5ab59754424905e8bb3576143");
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
-		ImageLoader.getInstance()
-					.init(config);
-		
 	}
 	
 	@Override
