@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="15dp"
     android:orientation="horizontal" >
 
-    <com.mikeladze.musicdiscovery.view.gridview.DynamicImageView
+    <ImageView
         android:id="@+id/view_search_result_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:maxHeight="15dp"
+        android:maxWidth="20dp"
+        android:scaleType="center" />
 
     <TextView
         android:id="@+id/view_search_result_title"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingLeft="10dp"
         android:paddingTop="5dp"
-        android:textSize="17dip" />
+        android:textSize="20dip" />
 
 </LinearLayout>
