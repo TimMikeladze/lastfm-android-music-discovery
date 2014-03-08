@@ -21,6 +21,11 @@ import com.mikeladze.musicdiscovery.http.RestClient;
 
 import fm.last.artist.Artist;
 
+/**
+ * This activity holds the fragments for an artist.
+ * 
+ * @author Tim Mikeladze
+ */
 public class ArtistActivity extends BaseFragmentActivity implements ActionBar.TabListener {
 	
 	private SectionsPagerAdapter sectionsPagerAdapter;
@@ -33,6 +38,9 @@ public class ArtistActivity extends BaseFragmentActivity implements ActionBar.Ta
 	private String mbid;
 	
 	@Override
+	/**
+	 * Creates the activity.
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -83,12 +91,18 @@ public class ArtistActivity extends BaseFragmentActivity implements ActionBar.Ta
 	}
 	
 	@Override
+	/**
+	 * Stores the received bundle for device orientation changed purposes
+	 */
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
 		super.onSaveInstanceState(savedInstanceState);
 		savedInstanceState.putString("name", name);
 		savedInstanceState.putString("mbid", mbid);
 	}
 	
+	/**
+	 * Load artist and update the fragments.
+	 */
 	private void loadArtist() {
 		RestClient.get(Artist.<String> getInfo(name, true, mbid, null, null), new JsonHttpResponseHandler() {
 			
@@ -101,7 +115,7 @@ public class ArtistActivity extends BaseFragmentActivity implements ActionBar.Ta
 			public void onSuccess(JSONObject response) {
 				setProgressBarIndeterminateVisibility(false);
 				try {
-					similarArtistsFragment.displaySimiliarArtists(response.getJSONObject("artist")
+					similarArtistsFragment.displaySimilarArtists(response.getJSONObject("artist")
 																			.getJSONObject("similar")
 																			.getJSONArray("artist"));
 					artistInfoFragment.displayArtistInfo(response.getJSONObject("artist"));

@@ -15,11 +15,19 @@ import com.mikeladze.musicdiscovery.base.fragment.ImageGridViewFragment;
 import com.mikeladze.musicdiscovery.http.LastFMResult;
 import com.origamilabs.library.views.StaggeredGridView;
 
+/**
+ * This fragment displays the similar artists related to an artist.
+ * 
+ * @author Tim Mikeladze
+ */
 public class SimilarArtistsFragment extends ImageGridViewFragment {
 	
 	private static final String TITLE = "Similar";
 	
 	@Override
+	/**
+	 * Creates the view.
+	 */
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
@@ -29,7 +37,12 @@ public class SimilarArtistsFragment extends ImageGridViewFragment {
 		return TITLE;
 	}
 	
-	public void displaySimiliarArtists(JSONArray artists) {
+	/**
+	 * Display similar artists.
+	 * 
+	 * @param artists the artists
+	 */
+	public void displaySimilarArtists(JSONArray artists) {
 		try {
 			for (int i = 0; i < artists.length(); i++) {
 				String image;
@@ -49,6 +62,9 @@ public class SimilarArtistsFragment extends ImageGridViewFragment {
 	}
 	
 	@Override
+	/**
+	 * Handles click events. Opens corresponding ArtistActivity.
+	 */
 	public void onItemClick(StaggeredGridView parent, View view, int position, long id) {
 		Intent intent = new Intent(getActivity(), ArtistActivity.class);
 		Bundle b = new Bundle();

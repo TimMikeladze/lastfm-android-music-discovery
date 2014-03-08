@@ -17,6 +17,11 @@ import com.mikeladze.musicdiscovery.R;
 import com.mikeladze.musicdiscovery.base.fragment.BaseTabFragment;
 import com.mikeladze.musicdiscovery.view.gridview.loader.ImageLoader;
 
+/**
+ * This fragment displays the artist image and information.
+ * 
+ * @author Tim Mikeladze
+ */
 public class ArtistInfoFragment extends BaseTabFragment {
 	
 	private static final String TITLE = "Info";
@@ -25,6 +30,9 @@ public class ArtistInfoFragment extends BaseTabFragment {
 	private TextView textViewInfo;
 	
 	@Override
+	/**
+	 * Creates the view
+	 */
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		v = inflater.inflate(R.layout.fragment_generic_info, container, false);
 		
@@ -39,6 +47,11 @@ public class ArtistInfoFragment extends BaseTabFragment {
 		return TITLE;
 	}
 	
+	/**
+	 * Display artist info.
+	 * 
+	 * @param artist the artist
+	 */
 	public void displayArtistInfo(JSONObject artist) {
 		String s = "No information";
 		try {

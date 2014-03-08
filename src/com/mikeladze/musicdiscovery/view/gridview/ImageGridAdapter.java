@@ -12,12 +12,24 @@ import com.mikeladze.musicdiscovery.R;
 import com.mikeladze.musicdiscovery.http.LastFMResult;
 import com.mikeladze.musicdiscovery.view.gridview.loader.ImageLoader;
 
+/**
+ * The ImageGridAdapter. A custom adapter to display last.fm image results in a staggered grid
+ * view.
+ * 
+ * @author Tim Mikeladze
+ */
 public class ImageGridAdapter extends ArrayAdapter<LastFMResult> {
 	
 	private Context context;
 	
 	private ImageLoader imageLoader;
 	
+	/**
+	 * Instantiates a new image grid adapter.
+	 * 
+	 * @param context the context
+	 * @param resource the resource
+	 */
 	public ImageGridAdapter(Context context, int resource) {
 		super(context, resource);
 		this.context = context;
@@ -26,6 +38,9 @@ public class ImageGridAdapter extends ArrayAdapter<LastFMResult> {
 	}
 	
 	@Override
+	/**
+	 * Get the view at given position.
+	 */
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
 		ViewHolder holder;
@@ -52,7 +67,12 @@ public class ImageGridAdapter extends ArrayAdapter<LastFMResult> {
 		return convertView;
 	}
 	
-	static class ViewHolder {
+	/**
+	 * This class is used as a container to hold data for smooth scrolling.
+	 * 
+	 * @author Tim Mikeladze
+	 */
+	private static class ViewHolder {
 		
 		private DynamicImageView image;
 		private TextView title;

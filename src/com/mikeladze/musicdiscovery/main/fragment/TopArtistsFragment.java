@@ -20,21 +20,35 @@ import com.origamilabs.library.views.StaggeredGridView;
 
 import fm.last.charts.Chart;
 
+/**
+ * The TopArtistsFragment. Shows the popular artists.
+ * 
+ * @author Tim Mikeladze
+ */
 public class TopArtistsFragment extends ImageGridViewFragment {
 	
 	private static final int NUMBER_OF_ARTISTS = 100;
 	private static final String TITLE = "Popular";
 	
 	@Override
+	/**
+	 * Creates the view.
+	 */
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 	
 	@Override
+	/**
+	 * Load the artists, done as last step of fragment creation.
+	 */
 	public void initialize() {
 		loadTopArtists();
 	}
 	
+	/**
+	 * Load top artists.
+	 */
 	private void loadTopArtists() {
 		RestClient.get(Chart.<String> getTopArtists(0, NUMBER_OF_ARTISTS), new JsonHttpResponseHandler() {
 			
@@ -70,6 +84,9 @@ public class TopArtistsFragment extends ImageGridViewFragment {
 	}
 	
 	@Override
+	/**
+	 * Handles click events. Opens corresponding ArtistActivity. 
+	 */
 	public void onItemClick(StaggeredGridView parent, View view, int position, long id) {
 		Intent intent = new Intent(getActivity(), ArtistActivity.class);
 		Bundle b = new Bundle();

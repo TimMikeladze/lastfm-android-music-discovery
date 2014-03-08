@@ -16,19 +16,28 @@ import com.mikeladze.musicdiscovery.main.fragment.TopArtistsFragment;
 
 import fm.last.lastfm.LastFM;
 
+/**
+ * The MainActivity, showed when app is started. Displays popular artists.
+ * 
+ * @author Tim Mikeladze
+ */
 public class MainActivity extends BaseFragmentActivity implements ActionBar.TabListener {
 	
+	private static final String ACTION_BAR_TITLE = "Top Artists";
 	private SectionsPagerAdapter sectionsPagerAdapter;
 	private ViewPager viewPager;
 	
 	@Override
+	/**
+	 * Creates the activity and adds the fragments.
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		actionBar.setDisplayHomeAsUpEnabled(false);
-		actionBar.setTitle("Top Artists");
+		actionBar.setTitle(ACTION_BAR_TITLE);
 		
-		intialize();
+		initialize();
 		
 		setContentView(R.layout.activity_main);
 		
@@ -58,7 +67,10 @@ public class MainActivity extends BaseFragmentActivity implements ActionBar.TabL
 		
 	}
 	
-	private void intialize() {
+	/**
+	 * Set the API key for Last.FM
+	 */
+	private void initialize() {
 		LastFM.setApiKey("aa4b32f5ab59754424905e8bb3576143");
 	}
 	

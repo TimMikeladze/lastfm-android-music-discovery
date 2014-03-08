@@ -20,22 +20,37 @@ import com.origamilabs.library.views.StaggeredGridView;
 
 import fm.last.charts.Chart;
 
+/**
+ * The HypedArtistsFragment. Shows the up and coming artists. Is a child class of
+ * ImageGridViewFragment.
+ * 
+ * @author Tim Mikeladze
+ */
 public class HypedArtistsFragment extends ImageGridViewFragment {
 	
 	private static final int NUMBER_OF_ARTISTS = 100;
 	private static final String TITLE = "Hyped";
 	
 	@Override
+	/**
+	 * Creates the view.
+	 */
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 	
 	@Override
+	/**
+	 * Load the artists, done as last step of fragment creation.
+	 */
 	public void initialize() {
-		loadTopArtists();
+		loadHypedArtists();
 	}
 	
-	private void loadTopArtists() {
+	/**
+	 * Load top artists.
+	 */
+	private void loadHypedArtists() {
 		RestClient.get(Chart.<String> getHypedArtists(0, NUMBER_OF_ARTISTS), new JsonHttpResponseHandler() {
 			
 			@Override
@@ -70,6 +85,9 @@ public class HypedArtistsFragment extends ImageGridViewFragment {
 	}
 	
 	@Override
+	/**
+	 * Handles click events. Opens corresponding ArtistActivity. 
+	 */
 	public void onItemClick(StaggeredGridView parent, View view, int position, long id) {
 		Intent intent = new Intent(getActivity(), ArtistActivity.class);
 		Bundle b = new Bundle();

@@ -28,8 +28,14 @@ import com.mikeladze.musicdiscovery.search.adapter.SearchResultsAdapter;
 import fm.last.album.Album;
 import fm.last.artist.Artist;
 
+/**
+ * This activity displays search results
+ * 
+ * @author Tim Mikeladze
+ */
 public class SearchResultsActivity extends BaseFragmentActivity implements OnChildClickListener {
 	
+	private static final String ACTION_BAR_TITLE = "Search Results";
 	private static final int NUMBER_OF_SEARCH_RESULTS = 10;
 	private SearchResultsAdapter listAdapter;
 	private ExpandableListView listView;
@@ -39,11 +45,14 @@ public class SearchResultsActivity extends BaseFragmentActivity implements OnChi
 	private String query;
 	
 	@Override
+	/**
+	 * Creates the activity
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		
-		actionBar.setTitle("Search Results");
+		actionBar.setTitle(ACTION_BAR_TITLE);
 		
 		if (savedInstanceState != null) {
 			query = savedInstanceState.getString("query");
@@ -56,11 +65,17 @@ public class SearchResultsActivity extends BaseFragmentActivity implements OnChi
 	}
 	
 	@Override
+	/**
+	 * Stores the received search query for device orientation changed purposes
+	 */
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
 		super.onSaveInstanceState(savedInstanceState);
 		savedInstanceState.putString("query", query);
 	}
 	
+	/**
+	 * Loads and displays the search results for artists and albums.
+	 */
 	private void loadSearchResults() {
 		headers = new ArrayList<String>();
 		items = new HashMap<String, List<LastFMResult>>();
@@ -146,11 +161,19 @@ public class SearchResultsActivity extends BaseFragmentActivity implements OnChi
 	}
 	
 	@Override
+	/**
+	 * Receives an intent 
+	 */
 	protected void onNewIntent(Intent intent) {
 		setIntent(intent);
 		handleIntent(intent);
 	}
 	
+	/**
+	 * Handles receiving the search intent and intiaites a search
+	 * 
+	 * @param intent the intent
+	 */
 	private void handleIntent(Intent intent) {
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			query = intent.getStringExtra(SearchManager.QUERY);
@@ -160,6 +183,9 @@ public class SearchResultsActivity extends BaseFragmentActivity implements OnChi
 	}
 	
 	@Override
+	/**
+	 * Handles click events to children in the search results list, starting appropriate activity based on item.
+	 */
 	public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 		Bundle b = new Bundle();
 		Class<?> c = null;

@@ -24,8 +24,7 @@ import android.widget.ImageView;
 
 /**
  * Using LazyList via
- * https://github.com/thest1/LazyList/tree/master/src/com/fedorvlasov/lazylist for the example
- * since its super lightweight I barely modified this file
+ * https://github.com/thest1/LazyList/tree/master/src/com/fedorvlasov/lazylist
  */
 public class ImageLoader {
 	

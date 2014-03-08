@@ -14,11 +14,20 @@ import android.widget.SearchView;
 
 import com.mikeladze.musicdiscovery.R;
 
+/**
+ * This is a base fragment activity used through out the app. Takes care of creating the
+ * actionbar.
+ * 
+ * @author Tim Mikeladze
+ */
 public abstract class BaseFragmentActivity extends FragmentActivity {
 	
 	protected ActionBar actionBar;
 	
 	@Override
+	/**
+	 * Creates the activity. Requests action bar and indeterminate progress. 
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -29,11 +38,13 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
 	}
 	
 	@Override
+	/**
+	 * The options menu is used for the "Search" icon.
+	 */
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu_main, menu);
 		
-		// Associate searchable configuration with the SearchView
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
 													.getActionView();
@@ -43,6 +54,9 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
 	}
 	
 	@Override
+	/**
+	 * Navigation using the app icon in top left corner.
+	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:

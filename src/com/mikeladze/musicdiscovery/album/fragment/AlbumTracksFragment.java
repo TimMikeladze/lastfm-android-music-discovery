@@ -16,6 +16,11 @@ import android.widget.ListView;
 import com.mikeladze.musicdiscovery.R;
 import com.mikeladze.musicdiscovery.base.fragment.BaseTabFragment;
 
+/**
+ * This fragment displays the tracks on the album in a listview
+ * 
+ * @author Tim Mikeladze
+ */
 public class AlbumTracksFragment extends BaseTabFragment {
 	
 	private static final String TITLE = "Tracks";
@@ -24,6 +29,9 @@ public class AlbumTracksFragment extends BaseTabFragment {
 	private ArrayList<String> tracksList;
 	
 	@Override
+	/**
+	 * Create the view
+	 */
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_generic_list, container, false);
 		
@@ -41,6 +49,11 @@ public class AlbumTracksFragment extends BaseTabFragment {
 		return TITLE;
 	}
 	
+	/**
+	 * Display album tracks.
+	 * 
+	 * @param tracks the tracks
+	 */
 	public void displayAlbumTracks(JSONArray tracks) {
 		try {
 			for (int i = 0; i < tracks.length(); i++) {

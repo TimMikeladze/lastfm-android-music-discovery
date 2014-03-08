@@ -15,11 +15,19 @@ import com.mikeladze.musicdiscovery.base.fragment.ImageGridViewFragment;
 import com.mikeladze.musicdiscovery.http.LastFMResult;
 import com.origamilabs.library.views.StaggeredGridView;
 
+/**
+ * Displays the albums under a particular artist.
+ * 
+ * @author Tim Mikeladze
+ */
 public class ArtistAlbumsFragment extends ImageGridViewFragment {
 	
 	private static final String TITLE = "Albums";
 	
 	@Override
+	/**
+	 * Creates the view
+	 */
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
@@ -29,6 +37,11 @@ public class ArtistAlbumsFragment extends ImageGridViewFragment {
 		return TITLE;
 	}
 	
+	/**
+	 * Display albums.
+	 * 
+	 * @param albums the albums
+	 */
 	public void displayAlbums(JSONArray albums) {
 		try {
 			for (int i = 0; i < albums.length(); i++) {
@@ -54,6 +67,9 @@ public class ArtistAlbumsFragment extends ImageGridViewFragment {
 	}
 	
 	@Override
+	/**
+	 * Handles click events to an album. Opens AlbumActivity for corresponding album. 
+	 */
 	public void onItemClick(StaggeredGridView parent, View view, int position, long id) {
 		Intent intent = new Intent(getActivity(), AlbumActivity.class);
 		Bundle b = new Bundle();

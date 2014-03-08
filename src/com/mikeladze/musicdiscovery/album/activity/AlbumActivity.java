@@ -21,6 +21,11 @@ import com.mikeladze.musicdiscovery.http.RestClient;
 
 import fm.last.album.Album;
 
+/**
+ * The AlbumActivity, contains the fragments for the album.
+ * 
+ * @author Tim Mikeladze
+ */
 public class AlbumActivity extends BaseFragmentActivity implements ActionBar.TabListener {
 	
 	private SectionsPagerAdapter sectionsPagerAdapter;
@@ -33,10 +38,13 @@ public class AlbumActivity extends BaseFragmentActivity implements ActionBar.Tab
 	private String mbid;
 	
 	@Override
+	/**
+	 * Creates the activity for the given album
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.activity_artist);
+		setContentView(R.layout.activity_album);
 		
 		if (savedInstanceState != null) {
 			name = savedInstanceState.getString("name");
@@ -84,6 +92,9 @@ public class AlbumActivity extends BaseFragmentActivity implements ActionBar.Tab
 	}
 	
 	@Override
+	/**
+	 * Stores the received search query for device orientation changed purposes
+	 */
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
 		super.onSaveInstanceState(savedInstanceState);
 		savedInstanceState.putString("name", name);
@@ -91,9 +102,11 @@ public class AlbumActivity extends BaseFragmentActivity implements ActionBar.Tab
 		savedInstanceState.putString("mbid", mbid);
 	}
 	
+	/**
+	 * Load the album information and update underlying fragments.
+	 */
 	private void loadAlbum() {
 		String url = Album.<String> getInfo(name, artist, true, mbid, null, null);
-		Log.d("url", url);
 		RestClient.get(url, new JsonHttpResponseHandler() {
 			
 			@Override
