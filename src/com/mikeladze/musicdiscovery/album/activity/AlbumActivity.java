@@ -122,9 +122,9 @@ public class AlbumActivity extends BaseFragmentActivity implements ActionBar.Tab
 												.getString("name") + " - " + response.getJSONObject("album")
 																						.getString("artist"));
 					albumInfoFragment.displayAlbumInfo(response.getJSONObject("album"));
-					albumTracksFragment.displayAlbumTracks(response.getJSONObject("album")
-																	.getJSONObject("tracks")
-																	.getJSONArray("track"));
+					albumTracksFragment.displayAlbumTracks(artist, response.getJSONObject("album")
+																			.getJSONObject("tracks")
+																			.getJSONArray("track"));
 					
 				} catch (JSONException e) {
 					e.printStackTrace();
