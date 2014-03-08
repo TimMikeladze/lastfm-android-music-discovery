@@ -1,5 +1,5 @@
 
-package com.mikeladze.musicdiscovery.base.fragments;
+package com.mikeladze.musicdiscovery.base.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,6 +39,8 @@ public abstract class ImageGridViewFragment extends BaseTabFragment implements O
 	public void onItemClick(StaggeredGridView parent, View view, int position, long id) {
 	}
 	
-	public abstract void initialize();
+	public void initialize() {
+		
+	}
 	
 }

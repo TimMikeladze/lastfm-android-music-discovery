@@ -1,5 +1,5 @@
 
-package com.mikeladze.musicdiscovery.search.activity;
+package com.mikeladze.musicdiscovery.search.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

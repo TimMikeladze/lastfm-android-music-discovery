@@ -12,18 +12,23 @@ import org.json.JSONObject;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.mikeladze.musicdiscovery.R;
-import com.mikeladze.musicdiscovery.base.activities.BaseFragmentActivity;
+import com.mikeladze.musicdiscovery.album.activity.AlbumActivity;
+import com.mikeladze.musicdiscovery.artist.activity.ArtistActivity;
+import com.mikeladze.musicdiscovery.base.activity.BaseFragmentActivity;
 import com.mikeladze.musicdiscovery.http.LastFMResult;
 import com.mikeladze.musicdiscovery.http.RestClient;
+import com.mikeladze.musicdiscovery.search.adapter.SearchResultsAdapter;
 
 import fm.last.album.Album;
 import fm.last.artist.Artist;
 
-public class SearchResultsActivity extends BaseFragmentActivity {
+public class SearchResultsActivity extends BaseFragmentActivity implements OnChildClickListener {
 	
 	private static final int NUMBER_OF_SEARCH_RESULTS = 10;
 	private SearchResultsAdapter listAdapter;
@@ -38,6 +43,8 @@ public class SearchResultsActivity extends BaseFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		
+		actionBar.setTitle("Search Results");
+		
 		if (savedInstanceState != null) {
 			query = savedInstanceState.getString("query");
 		}
@@ -45,6 +52,7 @@ public class SearchResultsActivity extends BaseFragmentActivity {
 		handleIntent(getIntent());
 		
 		listView = (ExpandableListView) findViewById(R.id.view_search_results);
+		listView.setOnChildClickListener(this);
 	}
 	
 	@Override
@@ -60,7 +68,15 @@ public class SearchResultsActivity extends BaseFragmentActivity {
 		RestClient.get(Artist.<String> search(query, 0, NUMBER_OF_SEARCH_RESULTS), new JsonHttpResponseHandler() {
 			
 			@Override
+			public void onStart() {
+				super.onStart();
+				setProgressBarIndeterminateVisibility(true);
+			}
+			
+			@Override
 			public void onSuccess(JSONObject response) {
+				
+				setProgressBarIndeterminateVisibility(false);
 				try {
 					JSONArray artists = response.getJSONObject("results")
 												.getJSONObject("artistmatches")
@@ -73,7 +89,9 @@ public class SearchResultsActivity extends BaseFragmentActivity {
 												.getString("#text");
 						String title = artists.getJSONObject(i)
 												.getString("name");
-						artistResults.add(new LastFMResult(image, title));
+						String mbid = artists.getJSONObject(i)
+												.getString("mbid");
+						artistResults.add(new LastFMResult(image, title, mbid));
 					}
 					
 					headers.add("Artists");
@@ -96,7 +114,13 @@ public class SearchResultsActivity extends BaseFragmentActivity {
 									String title = albums.getJSONObject(i)
 															.getString("name") + " - " + albums.getJSONObject(i)
 																								.getString("artist");
-									albumResults.add(new LastFMResult(image, title));
+									String mbid = albums.getJSONObject(i)
+														.getString("mbid");
+									
+									String artist = albums.getJSONObject(i)
+															.getString("artist");
+									
+									albumResults.add(new LastFMResult(image, title, artist, mbid));
 								}
 								
 								headers.add("Albums");
@@ -128,11 +152,41 @@ public class SearchResultsActivity extends BaseFragmentActivity {
 	}
 	
 	private void handleIntent(Intent intent) {
-		
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			query = intent.getStringExtra(SearchManager.QUERY);
 			loadSearchResults();
 		}
 		
+	}
+	
+	@Override
+	public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+		Bundle b = new Bundle();
+		Class<?> c = null;
+		switch (groupPosition) {
+			case 0:
+				c = ArtistActivity.class;
+				break;
+			case 1:
+				c = AlbumActivity.class;
+				b.putString("artist", items.get(headers.get(groupPosition))
+											.get(childPosition)
+											.getArtist());
+				break;
+			default:
+				break;
+		}
+		
+		Intent intent = new Intent(this, c);
+		b.putString("name", items.get(headers.get(groupPosition))
+									.get(childPosition)
+									.getTitle()
+									.split("-")[0].trim());
+		b.putString("mbid", items.get(headers.get(groupPosition))
+									.get(childPosition)
+									.getMBID());
+		intent.putExtras(b);
+		startActivity(intent);
+		return false;
 	}
 }

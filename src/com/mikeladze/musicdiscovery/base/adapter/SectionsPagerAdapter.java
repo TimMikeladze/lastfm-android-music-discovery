@@ -1,5 +1,5 @@
 
-package com.mikeladze.musicdiscovery.main.adapter;
+package com.mikeladze.musicdiscovery.base.adapter;
 
 import java.util.LinkedList;
 
@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.mikeladze.musicdiscovery.base.fragments.BaseTabFragment;
+import com.mikeladze.musicdiscovery.base.fragment.BaseTabFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 	

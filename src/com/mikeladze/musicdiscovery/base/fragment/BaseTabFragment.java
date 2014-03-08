@@ -1,5 +1,5 @@
 
-package com.mikeladze.musicdiscovery.base.fragments;
+package com.mikeladze.musicdiscovery.base.fragment;
 
 import android.support.v4.app.Fragment;
 

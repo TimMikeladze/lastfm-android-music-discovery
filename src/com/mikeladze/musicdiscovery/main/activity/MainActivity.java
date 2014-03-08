@@ -6,12 +6,13 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
 import com.mikeladze.musicdiscovery.R;
-import com.mikeladze.musicdiscovery.base.activities.BaseFragmentActivity;
-import com.mikeladze.musicdiscovery.hypedartists.fragment.HypedArtistsFragment;
-import com.mikeladze.musicdiscovery.main.adapter.SectionsPagerAdapter;
-import com.mikeladze.musicdiscovery.topartists.fragment.TopArtistsFragment;
+import com.mikeladze.musicdiscovery.base.activity.BaseFragmentActivity;
+import com.mikeladze.musicdiscovery.base.adapter.SectionsPagerAdapter;
+import com.mikeladze.musicdiscovery.main.fragment.HypedArtistsFragment;
+import com.mikeladze.musicdiscovery.main.fragment.TopArtistsFragment;
 
 import fm.last.lastfm.LastFM;
 
@@ -19,17 +20,18 @@ public class MainActivity extends BaseFragmentActivity implements ActionBar.TabL
 	
 	private SectionsPagerAdapter sectionsPagerAdapter;
 	private ViewPager viewPager;
-	private ActionBar actionBar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		actionBar.setDisplayHomeAsUpEnabled(false);
+		actionBar.setTitle("Top Artists");
+		
 		intialize();
 		
 		setContentView(R.layout.activity_main);
 		
-		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
@@ -71,6 +73,11 @@ public class MainActivity extends BaseFragmentActivity implements ActionBar.TabL
 	
 	@Override
 	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return true;
 	}
 	
 }
