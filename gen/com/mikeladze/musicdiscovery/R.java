@@ -252,15 +252,13 @@ containing a value of this type.
         public static final int menu_main=0x7f090000;
     }
     public static final class string {
-        public static final int action_search=0x7f070007;
-        public static final int action_settings=0x7f070001;
+        public static final int action_search=0x7f070005;
         public static final int app_name=0x7f070000;
-        public static final int hello_world=0x7f070002;
-        public static final int search_hint=0x7f070008;
-        public static final int title_activity_main=0x7f070003;
-        public static final int title_section1=0x7f070004;
-        public static final int title_section2=0x7f070005;
-        public static final int title_section3=0x7f070006;
+        public static final int search_hint=0x7f070006;
+        public static final int title_activity_main=0x7f070001;
+        public static final int title_section1=0x7f070002;
+        public static final int title_section2=0x7f070003;
+        public static final int title_section3=0x7f070004;
     }
     public static final class style {
         public static final int ActionBar_Solid_Style=0x7f080001;
